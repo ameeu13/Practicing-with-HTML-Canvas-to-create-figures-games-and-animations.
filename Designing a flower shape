@@ -1,0 +1,43 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle = "lightgray";
+    pincel.fillRect(0, 0, 600, 400);
+
+    function dibujarCirculo(x, y, radio, color) {
+
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x, y, radio, 0, 2*3.14);
+        pincel.fill();
+    }
+
+    dibujarCirculo(300,200, 25, "red"); // este es el centro de la flor :)
+
+    var x = 250;
+	var y = 150;
+	var r = 25;
+	while (x <= 350 , y <= 250){
+
+		dibujarCirculo(x,200, r, "yellow");
+		dibujarCirculo(300,y, r, "blue");
+			x = x + 100;
+			y = y + 100;
+		
+	}
+
+	function dibujarFlor() {
+    dibujarCirculo(100, 220, 10, "blue");
+    dibujarCirculo(100, 200, 10, "red");
+    dibujarCirculo(100, 180, 10, "yellow");
+    dibujarCirculo(80, 200, 10, "orange");
+    dibujarCirculo(120, 200, 10, "black");
+  }
+ dibujarFlor();
+	
+
+
+</script>
