@@ -1,0 +1,71 @@
+<canvas width="600" height="400">
+</canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	
+	pincel.fillStyle = "pink";
+	pincel.fillRect(0,0,50,50);
+	pincel.strokeStyle = "black"; 
+	pincel.strokeRect(0,0,50,50);
+
+	pincel.fillStyle = "pink";
+	pincel.fillRect(50,0,50,50); 
+	pincel.strokeStyle = "black"; 
+	pincel.strokeRect(50,0,50,50);
+
+	pincel.fillStyle = "pink";
+	pincel.fillRect(100,0,50,50); 
+	pincel.strokeStyle = "black"; 
+	pincel.strokeRect(100,0,50,50);
+
+	pincel.fillStyle = "pink";
+	pincel.fillRect(150,0,50,50); 
+	pincel.strokeStyle = "black"; 
+	pincel.strokeRect(150,0,50,50);
+
+	pincel.fillStyle = "pink";
+	pincel.fillRect(200,0,50,50); 
+	pincel.strokeStyle = "black"; 
+	pincel.strokeRect(200,0,50,50);
+
+	// Repetir código no es eficiente :( ; creare una función para hacerlo SIUUU
+
+	function dibujarCuadritos (x,y,color) {
+
+		var pantalla = document.querySelector("canvas");
+		var pincel = pantalla.getContext("2d");
+
+		//estas variables se pueden repetir porque lo que existe dentro de la función, no existe fuera de ella :)
+
+		pincel.fillStyle = color;
+		pincel.fillRect(x,100+y,50,50);
+		pincel.strokeStyle = "black"; 
+		pincel.strokeRect(x,100+y,50,50);
+	}
+
+	// Si llamo a esto varias veces, solo pondré muchos cuadritos encima :(; debo crear un parámetro para que la función altere los valores fijos y haga lo que quiero :D
+
+	dibujarCuadritos(0,0,"pink");
+	dibujarCuadritos(50,50,"lightyellow");
+	dibujarCuadritos(100,100,"lightgreen");
+	dibujarCuadritos(150,150,"pink");
+	dibujarCuadritos(200,200,"lightyellow");
+	dibujarCuadritos(250,250,"lightgreen");	
+
+	//Se puede usar iteraciones para mejorar este código aún mas :)
+	var x = 0;
+	var y = -50; 
+	//Se pueden asignar valores negativos a las variables :o
+	while (x < 600 , y < 400){
+		dibujarCuadritos(x,y,"lightgray");
+		dibujarCuadritos(x,y+100,"lightgray");
+		//se pueden colocar sumas entre los parámetros :o
+		x = x + 50;
+		y = y + 50;
+	}
+
+</script>
