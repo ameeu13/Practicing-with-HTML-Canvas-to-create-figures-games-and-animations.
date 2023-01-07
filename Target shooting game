@@ -1,0 +1,70 @@
+<canvas width="600" height="400"> </canvas>
+
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");    
+    pincel.fillStyle = "pink";
+    pincel.fillRect(0,0,600,400); 
+
+
+    var r = 10;
+    var xAleatorio;
+    var yAleatorio;
+
+
+    function dibujarCirculo(x,y,r,color){
+    
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,r,0,2*Math.PI);
+        pincel.fill();
+               
+    }
+
+    function limpiarPantalla(){
+
+        pincel.clearRect(0,0,600,400);
+    }
+    
+
+    var x = 0;
+    
+
+    function dibujarObjetivo(x,y){
+        dibujarCirculo(x,y,r*6,"red");
+        dibujarCirculo(x,y,r*4,"white");
+        dibujarCirculo(x,y,r*2,"red");
+    }
+
+    function sortearObjetivo(max,min){
+        return Math.floor(Math.random()*max);
+    }
+
+     function actualizarPantalla(){
+        limpiarPantalla();
+        xAleatorio = sortearObjetivo(600);
+        yAleatorio = sortearObjetivo(400);
+        dibujarObjetivo(xAleatorio,yAleatorio);
+        x++;
+
+    }   
+
+
+    setInterval(actualizarPantalla,1000);// Esto sirve para que el blanco cambie de posición cada segundo
+    //pantalla.onclick = actualizarPantalla;// Esto sirve para que el blanco cambie de posición cada vez que se da un clic en la pantalla del canvas
+
+    function disparo(evento){
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+
+        if ((x < xAleatorio + r ) && (y < yAleatorio + r) && (x > xAleatorio - r) && (y > yAleatorio - r)) {
+
+            alert( "Tiro Certero :D, en las coordenadas: X=" + x + ", Y=" + y );
+
+        }
+             
+    }
+    
+    pantalla.onclick = disparo;
+
+</script> 
