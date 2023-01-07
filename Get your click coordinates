@@ -1,0 +1,26 @@
+<canvas width="600" height="400">
+</canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	
+	pincel.fillStyle = "pink";
+	pincel.fillRect(0,0,600,400);
+
+	function exibirAlerta(evento){
+		var x = evento.pageX - pantalla.offsetLeft;
+		var y = evento.pageY - pantalla.offsetTop;
+		console.log( evento );
+		alert("Haz hecho un clic ;) en las coordenadas: X=" + x + ", Y=" + y);
+	}
+
+	
+
+	pantalla.onclick = exibirAlerta;   //este va sin parentesis, ya que si se le colocan la llama inmediatamente y no al hacer clic :)
+	
+
+
+</script>
