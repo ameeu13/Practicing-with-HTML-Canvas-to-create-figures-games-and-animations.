@@ -1,0 +1,33 @@
+<canvas width="600" height="400">
+</canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	
+	pincel.fillStyle = "pink"; //esto es una propiedad o caracteristica
+	pincel.fillRect(0,0,600,400); // Esto es una función
+
+	pincel.fillStyle = "lightyellow"
+	pincel.fillRect(0,0,200,400);
+
+	pincel.fillStyle = "lightgrey"
+	pincel.fillRect(400,0,200,400);
+
+
+	pincel.fillStyle = "white";
+	pincel.beginPath();
+	pincel.moveTo(300,200);
+	pincel.lineTo(200,400);
+	pincel.lineTo(400,400);
+	pincel.fill(); //Rellena el gráfico con el color definido arriba :)
+
+
+	pincel.fillStyle = "lightgreen";
+	pincel.beginPath();
+	pincel.arc(300,200,50,0,2*3.14156165);//grafica circunferencia. Primero, posicion inicial(x,y). Luego el radio. Luego, angulo inicial (para circulo completo colocar 0; 3.14 es medio circulo). Luego, angulo final. 
+	pincel.fill(); 
+
+</script>
