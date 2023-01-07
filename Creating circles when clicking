@@ -1,0 +1,43 @@
+<canvas width="600" height="400">
+</canvas>
+
+<script>
+
+	var pantalla = document.querySelector("canvas");
+	var pincel = pantalla.getContext("2d");
+
+	
+	pincel.fillStyle = "pink";
+	pincel.fillRect(0,0,600,400);
+
+
+	function dibujarCirculo(evento){
+		var x = evento.pageX - pantalla.offsetLeft;
+		var y = evento.pageY - pantalla.offsetTop;
+		
+		pincel.fillStyle = "lightgray";
+		pincel.beginPath();
+		pincel.arc(x,y,5,0,2*3.14156165); 
+		pincel.fill(); 
+
+		console.log( "Haz hecho un clic ;) en las coordenadas: X=" + x + ", Y=" + y );
+	}
+
+	
+	pantalla.onclick = dibujarCirculo;
+
+	function alterarColor(evento){
+		var x = evento.pageX - pantalla.offsetLeft;
+		var y = evento.pageY - pantalla.offsetTop;
+
+		pincel.fillStyle = "yellow";
+		pincel.beginPath();
+		pincel.arc(x,y,5,0,2*3.14156165); 
+		pincel.fill(); 
+
+		return false;
+	}
+
+	pantalla.oncontextmenu = alterarColor;
+
+</script>
